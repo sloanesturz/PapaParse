@@ -645,6 +645,11 @@
 				var end = Math.min(this._start + this._config.chunkSize, this._input.size);
 				input = slice.call(input, this._start, end);
 			}
+			else if (this._config.preview)
+			{
+				var end = Math.min(this._config.preview, this._input.size);
+				input = slice.call(input, this._start, end);
+			}
 			var txt = reader.readAsText(input, this._config.encoding);
 			if (!usingAsyncReader)
 				this._chunkLoaded({ target: { result: txt } });	// mimic the async signature
